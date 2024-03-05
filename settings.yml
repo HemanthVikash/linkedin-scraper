@@ -1,0 +1,8 @@
+log_file: "logfile.txt"             # logs/
+
+sample_search: "sample_search.html" # data/
+
+results:
+  posts_file: './results/posts.csv'
+  test_posts_file: './results/test.csv'
+  
