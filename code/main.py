@@ -63,8 +63,8 @@ class LinkedInPostCrawler:
         logger.info("Initialized drivers")
 
 
-        self.username = 'hemanthv@vt.edu' # None
-        self.password = '4KM1rYBU'# None
+        self.username = None
+        self.password = None
         
 
     '''
