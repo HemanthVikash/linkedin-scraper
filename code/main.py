@@ -17,12 +17,10 @@ from getpass import getpass
 
 from common_methods import *
 # To get out of testing mode and actually do scraping, 
-# 1. Remove TEST_SEARCH_PATH file in your folder
-# 2. Remove TEST_PROFILE_PATH in your folder
-# 3. Set TESTING to False
+# 1. Set TESTING to False
 
-TEST_SEARCH_PATH = './sample_search.html'
-TEST_PROFILE_PATH = './sample_profile.html'
+TEST_SEARCH_PATH = os.path.join('data', 'sample_search.html')
+TEST_PROFILE_PATH = os.path.join('data', 'sample_profile.html')
 TESTING = False
 
 with open("./settings.yml") as stream:
@@ -63,6 +61,10 @@ class LinkedInPostCrawler:
         logger.info("Opening automated secondary browser")
         self.secondary_driver = webdriver.Chrome(service=cService)
         logger.info("Initialized drivers")
+
+
+        self.username = 'hemanthv@vt.edu' # None
+        self.password = '4KM1rYBU'# None
         
 
     '''
@@ -80,14 +82,15 @@ class LinkedInPostCrawler:
 
         driver.get(endpoint)
 
-        username = input("Username: ")
-        password = getpass("Password: ")
+        if self.username is None:
+            self.username = input("Username: ")
+            self.password = getpass("Password: ")
         
         username_field = driver.find_element(By.ID, 'username')
         password_field = driver.find_element(By.ID, 'password')
 
-        username_field.send_keys(username)
-        password_field.send_keys(password)
+        username_field.send_keys(self.username)
+        password_field.send_keys(self.password)
 
         sign_in_btn = (
             driver
@@ -110,7 +113,8 @@ class LinkedInPostCrawler:
         
 
     def __get_search_options(self):
-        with open("./search_options.yml") as stream:
+        
+        with open(os.path.join('code', 'search_options.yml')) as stream:
             try:
                 return yaml.safe_load(stream)
             except yaml.YAMLError as exc:
@@ -359,7 +363,7 @@ class LinkedInPostCrawler:
 
         # First scroll height
         last_height = self.driver.execute_script(scroll_height_command)
-        scrolls = 0
+        scrolls = 3
         no_change = 0
 
         while True:
@@ -429,6 +433,8 @@ class LinkedInPostCrawler:
                 post_details.append(details)
             else:
                 logger.warning("No actor found")
+
+            
 
 
         logger.info(f"posts details for {len(post_details)} posts")

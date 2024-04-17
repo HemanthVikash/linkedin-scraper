@@ -12,6 +12,6 @@ test.py
 
 
 # Results
-results/posts.csv
+results/*
 
 
