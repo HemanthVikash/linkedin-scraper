@@ -20,6 +20,7 @@ HIGHLY RECOMMEND CHANGING settings.yml before running the application.
 ```
 git clone https://github.com/HemanthVikash/linkedin-scraper.git
 cd scraper
+conda env create --file=environment.yml
 python code/main.py
 ```
 
