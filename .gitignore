@@ -1,0 +1,20 @@
+# vs code env variables and cache
+.vscode
+__pycache__
+.DS_Store
+.env
+
+# logs
+logfile.txt
+
+
+# local testing dummy file
+test.py 
+
+
+# Results
+results/*
+
+
+
+

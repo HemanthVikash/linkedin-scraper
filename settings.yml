@@ -1,0 +1,16 @@
+log_file: "logfile.txt"             # logs/
+
+intermediate_files:
+  sample_search: "sample_search.html"   # data/
+  sample_profile: "sample_profile.html" # data/
+
+results:
+  posts_file: './results/posts.csv'
+  test_posts_file: './results/test.csv'
+  easy_apply_file: './results/easy_apply.csv'
+
+
+
+authentication:
+  password_storage: 'linkedin_credentials'    # keyring for storing password
+  username: 'hemanthv@vt.edu'
